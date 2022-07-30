@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
     //expects {title: 'This is a title', contents: 'block of text', user_id: 1}
     Post.create({
         title: req.body.title,
-        post_url: req.body.post_url,
+        contents: req.body.contents,
         // user_id: req.session.user_id
         user_id: req.body.user_id
     })
