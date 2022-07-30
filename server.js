@@ -10,6 +10,7 @@ const sequelize = require('./config/connection');
 const exphbs = require('express-handlebars');
 //create the handlebars object and include the custom helper functions
 // const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create();
 //sessions for express, and connect-session-sequelize to write session data to the db using sequelize
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -34,8 +35,8 @@ app.use(express.urlencoded({ extended: true }));
 //required for users to see static assets in the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 //required for Express Handlebars
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 //required to use sessions
 app.use(session(sess));
 

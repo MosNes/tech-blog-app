@@ -1,0 +1,8 @@
+<ol class="" id="post-list">
+    {{!-- #each ... /each repeats this block of HTML for each item in the posts array --}}
+    {{#each posts as |post|}}
+    <li>
+        {{> post-info post}}
+    </li>
+    {{/each}}
+</ol>
