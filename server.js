@@ -6,24 +6,23 @@ const path = require('path');
 const express = require('express');
 const routes = require('./controllers/');
 const sequelize = require('./config/connection');
-// //handlebars for express
-// const exphbs = require('express-handlebars');
-// //create the handlebars object and include the custom helper functions
+//handlebars for express
+const exphbs = require('express-handlebars');
+//create the handlebars object and include the custom helper functions
 // const hbs = exphbs.create({ helpers });
-// //sessions for express, and connect-session-sequelize to write session data to the db using sequelize
-// const session = require('express-session');
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+//sessions for express, and connect-session-sequelize to write session data to the db using sequelize
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-//reconfig for heroku?
-// const sess = {
-//     secret: process.env.SESS_SECRET,
-//     cookie: {},
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new SequelizeStore({
-//         db: sequelize
-//     })
-// };
+const sess = {
+    secret: process.env.SESS_SECRET,
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
+};
 
 
 const app = express();
@@ -38,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.engine('handlebars', hbs.engine);
 // app.set('view engine', 'handlebars');
 //required to use sessions
-// app.use(session(sess));
+app.use(session(sess));
 
 //Routes
 app.use(routes);
@@ -46,6 +45,6 @@ app.use(routes);
 //-----------------------INITIALIZATIONS-----------------------------------------------------
 
 // initialize database connection and start server
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now Listening'))
 });
