@@ -2,10 +2,10 @@ const router = require('express').Router();
 
 const { Post }  = require('../../models');
 
-//Get all users
+//Get all posts
 router.get('/', (req, res) => {
     Post.findAll({
-        attribuges: { exclude: ['password'] }
+        
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -13,5 +13,13 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+//Get post by ID
+
+//Create Post
+
+//Update Post
+
+//Delete Post
 
 module.exports = router;
