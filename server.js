@@ -46,6 +46,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //-----------------------INITIALIZATIONS-----------------------------------------------------
 
 // initialize database connection and start server
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log('Now Listening'))
-})
+});
