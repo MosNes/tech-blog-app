@@ -69,4 +69,6 @@ User.init(
         //force model name to stay lowercase in the database
         modelName: 'user'
     }
-)
+);
+
+module.exports = User;
