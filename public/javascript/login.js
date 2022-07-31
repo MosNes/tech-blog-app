@@ -1,12 +1,12 @@
-async function loginFormHandler(event) { 
+async function loginFormHandler(event) {
     event.preventDefault();
 
     //get input from form and trim whitespace
-    const email = document.getElementById('username-login').value.trim();
+    const username = document.getElementById('username-login').value.trim();
     const password = document.getElementById('password-login').value.trim();
 
     //validate input
-    if(email && password) {
+    if(username && password) {
         //make fetch call to api route
         const response = await fetch('/api/users/login', {
             method: 'post',
@@ -16,11 +16,13 @@ async function loginFormHandler(event) {
             }),
             headers: { 'Content-Type': 'application/json'}
         });
+
+        console.log(response);
         
         //check response data
         if (response.ok) {
             //if succesfully logged in, redirect to dashboard
-            document.location.replace('/dashboard');
+            document.location.replace('/');
         } else {
             //throw error alert
             alert(response.statusText);

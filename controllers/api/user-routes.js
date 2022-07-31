@@ -50,13 +50,12 @@ router.get('/:id', (req, res) => {
 });
 
 //Create New User
-//user POST to add email, username, and password to the user table in the database, then creates a session for the user
+//user POST to add username and password to the user table in the database, then creates a session for the user
 //PW is hashed by the User model before being saved to the DB
 router.post('/', (req, res) => {
-    // expects {username: 'user', email: 'user@user.com', password: 'password'}
+    // expects {username: 'user', password: 'password'}
     User.create({
         username: req.body.username,
-        email: req.body.email,
         password: req.body.password
     })
         .then(dbUserData => {
@@ -79,11 +78,11 @@ router.post('/', (req, res) => {
 //uses POST to send the PW as part of the request body instead of a plaintext query parameter used by GET
 router.post('/login', (req, res) => {
 
-    //expects {email: 'email@domain.com', password: 'userpassword'}
+    //expects {user: 'username', password: 'userpassword'}
 
     User.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username,
         }
     })
         .then(async dbUserData => {
