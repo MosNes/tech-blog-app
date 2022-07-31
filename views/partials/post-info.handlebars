@@ -1,6 +1,8 @@
 <article class="card column is-centered is-12 m-4">
     <div class="card-header">
-        <h3 class="card-header-title">{{title}}</h3>
+        <a href="/post/{{id}}">
+            <h3 class="card-header-title">{{title}}</h3>
+        </a>
     </div>
     <div class="card-content">
         <div class="content">
@@ -9,7 +11,8 @@
     </div>
     <div class="card-footer">
         <p>Created by <strong>{{user.username}}</strong> on {{created_at}}
-        |
-        <a href="/post/{{id}}">{{comments.length}} comment {{comments.length}}</a></p>
+            |
+            <a href="/post/{{id}}">{{comments.length}} comment {{comments.length}}</a>
+        </p>
     </div>
 </article>
