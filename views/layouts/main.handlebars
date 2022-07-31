@@ -2,39 +2,53 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Blog</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
-  <div class="">
-    <header>
-      <h1>
-        <a href="/">Tech Blog</a>
-      </h1>
-      <nav>
-        {{!-- selectively display the login or logout button depending on whether user is logged in or not --}}
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Created by MosNes &copy;2022
-    </footer>
-  </div>
-{{!-- only load logout script if user is logged in --}}
-{{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
-{{/if}}
+    <div class="">
+        <header class="mb-4">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <h1>
+                            <a class="button is-primary is-size-3" href="/"><strong>Tech Blog</strong></a>
+                        </h1>
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            {{#if loggedIn}}
+                            <a class="button is-light is-size-4" id="logout-btn">
+                                Log out
+                            </a>
+                            {{else}}
+                            <a class="button is-primary is-size-4" id="sign-up-btn">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light is-size-4" id="login-btn">
+                                Log in
+                            </a>
+                            {{/if}}
+                        </div>
+                    </div>
+            </nav>
+        </header>
+        <main class="columns is-centered">
+            {{{ body }}}
+        </main>
+        <footer class="has-text-centered">
+            Created by MosNes &copy;2022
+        </footer>
+    </div>
+    {{!-- only load logout script if user is logged in --}}
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>
