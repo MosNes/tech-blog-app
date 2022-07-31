@@ -51,4 +51,17 @@ router.get('/', (req, res) => {
         });
 });
 
+//login page route for /login
+router.get('/login', (req, res) => {
+
+ //if user is logged in, redirect to homepage
+ if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+}
+
+res.render('login');
+
+});
+
 module.exports = router;
