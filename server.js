@@ -9,8 +9,7 @@ const sequelize = require('./config/connection');
 //handlebars for express
 const exphbs = require('express-handlebars');
 //create the handlebars object and include the custom helper functions
-// const hbs = exphbs.create({ helpers });
-const hbs = exphbs.create();
+const hbs = exphbs.create({ helpers });
 //sessions for express, and connect-session-sequelize to write session data to the db using sequelize
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
