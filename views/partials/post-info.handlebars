@@ -9,10 +9,10 @@
             {{contents}}
         </div>
     </div>
-    <div class="card-footer">
-        <p>Created by <strong>{{user.username}}</strong> on {{created_at}}
+    <div class="card-footer p-2">
+        <p>Created by <strong>{{user.username}}</strong> on {{format_date created_at}}
             |
-            <a href="/post/{{id}}">{{comments.length}} comment {{comments.length}}</a>
+            <a href="/post/{{id}}">{{format_plural "Comment" comments.length}} {{comments.length}}</a>
         </p>
     </div>
 </article>
