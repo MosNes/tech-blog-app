@@ -6,6 +6,7 @@ const path = require('path');
 const express = require('express');
 const routes = require('./controllers/');
 const sequelize = require('./config/connection');
+const helpers = require('./utils/helpers');
 //handlebars for express
 const exphbs = require('express-handlebars');
 //create the handlebars object and include the custom helper functions

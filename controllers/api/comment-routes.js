@@ -18,14 +18,14 @@ router.get('/', (req, res) => {
 //Create New Comment
 router.post('/', withAuth, (req, res) => {
     //expects {comment_text: 'block of text', post_id: number, user_id: number}
-    //check session (replace true with if req.session)
-    if (true) {
+    //check session
+    if (req.session) {
 
         Comment.create({
             comment_text: req.body.comment_text,
             post_id: req.body.post_id,
             //use id from session
-            user_id: req.body.user_id
+            user_id: req.session.user_id
         })
             .then(dbCommentData => res.json(dbCommentData))
             .catch(err => {

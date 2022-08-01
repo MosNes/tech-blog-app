@@ -1,0 +1,25 @@
+<section class="column is-11">
+    {{> post-info post}}
+    {{!-- only renders if user is logged in --}}
+</section>
+<section class="column is-10">
+    {{!-- {{> comments post.comments}} --}}
+</section>
+<section class="m-4 column is-10">
+     {{#if loggedIn}}
+    <form class="box container" id="comment-form">
+        <div class="block">
+            <textarea class="textarea" rows="5" name="comment-body" id="comment-body"></textarea>
+        </div>
+
+        <div class="block is-flex is-justify-content-center">
+            <button class="button is-primary" type="submit">Add Comment</button>
+        </div>
+    </form>
+    {{/if}}
+</section>
+
+{{!-- only load these scripts if the user is logged in --}}
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
