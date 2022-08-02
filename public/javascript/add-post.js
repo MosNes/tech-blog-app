@@ -1,3 +1,15 @@
+function toggleNewPostFormHandler(event) {
+
+    //show the Create New Post form
+    document.getElementById('new-post-form')
+    .classList.remove('is-hidden');
+
+    //hide the Create New Post Button
+    document.getElementById('new-post-toggle-container')
+    .classList.add('is-hidden');
+
+};
+
 async function newPostHandler(event) {
     event.preventDefault();
 
@@ -22,4 +34,5 @@ async function newPostHandler(event) {
     }
 }
 
+document.getElementById('new-post-toggle').addEventListener('click', toggleNewPostFormHandler);
 document.getElementById('new-post-form').addEventListener('submit', newPostHandler);
