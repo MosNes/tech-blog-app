@@ -17,16 +17,21 @@
     </form>
 </section>
 {{#if posts.length}}
-<section class="column is-three-quarters container box m-4">
+<section class="column is-three-quarters container box m-4" id="your-posts-container">
     <div class="block is-flex is-justify-content-center">
             <h2 class="is-size-4">Your Posts</h2>
         </div>
         {{#each posts as |post|}}
         
             {{> post-info post}}
-            <a class="button is-secondary is-size-6 mb-5 ml-4" href="/dashboard/edit/{{post.id}}"><strong>Edit This Post</strong></a>
+            <div class="mb-5 ml-4 mr-4 is-flex is-justify-content-flex-end">
+                <a class="button is-primary is-size-6 mx-1" href="/dashboard/edit/{{post.id}}">Edit This Post</a>
+                <button class="button is-danger is-size-6 mx-1" data-type="delete-btn" data-id="{{post.id}}">Delete This Post</button>
+            </div>
+            
         
         {{/each}}
 </section>
 {{/if}}
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
