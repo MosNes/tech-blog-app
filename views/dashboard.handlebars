@@ -1,5 +1,5 @@
 <section class="column is-three-quarters container box m-5">
-    <form class="container p-3">
+    <form class="container p-3" id="new-post-form">
         <div class="block is-flex is-justify-content-center">
             <h2 class="is-size-4">Create New Post</h2>
         </div>
@@ -17,16 +17,16 @@
     </form>
 </section>
 {{#if posts.length}}
-<section>
-    <h2>Your Posts</h2>
-    <ol>
+<section class="column is-three-quarters container box m-4">
+    <div class="block is-flex is-justify-content-center">
+            <h2 class="is-size-4">Your Posts</h2>
+        </div>
         {{#each posts as |post|}}
-        <li>
+        
             {{> post-info post}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-        </li>
+            <a class="button is-secondary is-size-6 mb-5 ml-4" href="/dashboard/edit/{{post.id}}"><strong>Edit This Post</strong></a>
+        
         {{/each}}
-    </ol>
 </section>
 {{/if}}
 <script src="/javascript/add-post.js"></script>
