@@ -1,0 +1,32 @@
+<section class="column is-three-quarters container box m-5">
+    <form class="container p-3">
+        <div class="block is-flex is-justify-content-center">
+            <h2 class="is-size-4">Create New Post</h2>
+        </div>
+        <div class="field">
+            <label class="label" for="post-title">Title</label>
+            <input class="input is-primary" type="text" id="post-title" name="post-title" />
+        </div>
+        <div class="field">
+            <label for="post-body" class="label">Post Text</label>
+            <textarea class="textarea" rows="5" name="post-body" id="post-body"></textarea>
+        </div>
+        <div class="block is-flex is-justify-content-center mt-4">
+            <button class="button is-primary is-size-5" type="submit"><strong>Submit</strong></button>
+        </div>
+    </form>
+</section>
+{{#if posts.length}}
+<section>
+    <h2>Your Posts</h2>
+    <ol>
+        {{#each posts as |post|}}
+        <li>
+            {{> post-info post}}
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}
+<script src="/javascript/add-post.js"></script>
