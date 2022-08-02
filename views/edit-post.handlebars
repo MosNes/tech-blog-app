@@ -1,0 +1,29 @@
+<article class="column is-three-quarters container box m-5" id="your-posts-container">
+       <form class="container p-3">
+        <div class="block is-flex is-justify-content-center">
+            <h2 class="is-size-4">Edit Post</h2>
+        </div>
+        <div class="field">
+            <label class="label" for="post-title">Title</label>
+            <input class="input is-primary" name="post-title" id="post-title" type="text" value="{{post.title}}" />
+        </div>
+        <div class="field">
+            <label for="post-body" class="label">Post Text</label>
+            <textarea class="textarea" rows="5" name="post-body" id="post-body">{{post.contents}}</textarea>
+        </div>
+        <div class="block">
+            Created by you on {{format_date post.created_at}}
+            |
+            <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+        </div>
+        <div class="is-flex">
+                <button class="button is-primary is-size-6 mx-1" id="save-btn">Save Changes</button>
+                {{!-- store the post ID as a data property on the corresponding delete button element --}}
+                <button class="button is-danger is-size-6 mx-1" id="delete-btn" data-type="delete-btn" data-id="{{post.id}}">Delete This Post</button>
+        </div>
+    </form>
+</article>
+
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>

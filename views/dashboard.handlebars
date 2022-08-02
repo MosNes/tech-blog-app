@@ -1,7 +1,9 @@
 <section class="column is-three-quarters container box m-5">
+    {{!-- Create New Post button --}}
     <div id="new-post-toggle-container" class="is-flex is-justify-content-center m-4">
         <button id="new-post-toggle" class="button is-primary is-size-3">Create New Post</button>
     </div>
+    {{!-- Hidden form revealed by Create New Post button --}}
     <form class="container p-3 is-hidden" id="new-post-form">
         <div class="block is-flex is-justify-content-center">
             <h2 class="is-size-4">Create New Post</h2>
@@ -29,6 +31,7 @@
             {{> post-info post}}
             <div class="mb-5 ml-4 mr-4 is-flex is-justify-content-flex-end">
                 <a class="button is-primary is-size-6 mx-1" href="/dashboard/edit/{{post.id}}">Edit This Post</a>
+                {{!-- store the post ID as a data property on the corresponding delete button element --}}
                 <button class="button is-danger is-size-6 mx-1" data-type="delete-btn" data-id="{{post.id}}">Delete This Post</button>
             </div>
             

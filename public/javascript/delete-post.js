@@ -6,7 +6,7 @@ async function deletePostHandler(event) {
     //get post ID from delete button data property
     const postId = event.target.dataset.id;
 
-    const response = await fetch(`api/posts/${postId}`, {
+    const response = await fetch(`/api/posts/${postId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
